@@ -1,0 +1,57 @@
+/** {box-sizing: border-box;
+    margin: 0;*/
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.headerspace {
+    
+    
+    
+  
+    border-bottom: .5px outset;
+    background:black;
+    color: palevioletred;
+    height: 7em;
+    /*padding-top:2em;*/
+    /*padding-bottom: 2em;*/
+    width: 100%;
+    
+
+}
+.heading {
+  padding-left: 300px;
+  
+   
+}
+.logo img{
+    width: 60px;
+    height:60px;
+    margin-left: 250px;
+    margin-top: 20px;
+}
+.logo,.heading{
+    display:inline-block;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    
+}
+
+li {
+
+    line-height: 3em;
+}
+
+
+
+   
+    
+  
+    
+    
+    
+    
+
