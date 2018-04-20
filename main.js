@@ -109,7 +109,7 @@ function makeList (array, parentNode) {
         else {
         item.innerHTML = "<ul><li>" + "stargazers: " + array[j].stargazers + "</li>" + "<li>" + "watchers: " + array[j].watchers + "</li>" + 
         "<li>" + "forks: " + array[j].forks + "</li>" + 
-        "<li>" + "language: " + array[j].langugage + "</li></ul>"
+        "<li>" + "language: " + array[j].language + "</li></ul>"
         }
 
        
