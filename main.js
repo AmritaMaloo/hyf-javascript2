@@ -45,7 +45,7 @@ function isSpeed30to60 (car) {
     return car.speed >=30 && car.speed <= 60;
 }
 
-function getMakes (car) {
+function getMake (car) {
     return car.make;
 }
 
@@ -54,11 +54,11 @@ function notLightYellow (car) {
 }
 
 function getKey (car) {
-    let y = {};
-    y.mærke = car.make;    
-    y.farve = car.color;
-    y.farte = car.speed;        
-    return y;
+    return {
+        mærke: car.make,
+        fart: car.speed,
+        farve: car.color
+    };
     
 }
 
@@ -68,7 +68,7 @@ console.log(x);
 console.log('list of cars between the speed 30 and 60');
 console.log(x.filter(isSpeed30to60));
 console.log('list of cars which are not light yellow');
-console.log(x.filter(notLightYellow).map(getMakes));
+console.log(x.filter(notLightYellow).map(getMake));
 console.log('the array after renaming the keys is');
 console.log(x.map(getKey));
 
@@ -81,29 +81,16 @@ console.log(repoList);
 console.log('Name of the 3rd repository is ');
 console.log(repoList[2].name);
 
-const parentNode0 = document.getElementsByTagName("ul")[0];
-const parentNode1 = document.getElementsByTagName("ul")[1];
+const parentNode0 = document.getElementsByClassName("column")[0];
+const parentNode1 = document.getElementsByClassName("column")[1];
 
-function createObjArray () {
-    const arrayofRepoList = [];
-    
-    for (let j = 0; j < repoList.length; j++) {
-        
-        let objOfRepoList = {};
-        objOfRepoList = repoList[j];
-        arrayofRepoList.push(objOfRepoList);
-
-    }
-return arrayofRepoList;
-
-}
+const moduleArray = ["HTML-CSS", "databases", "JavaScript1", "Git", "JavaScript1", "Git", "CommandLine", "Project", "Node.js", "React" ];
 
 function selectModule (objOfRepoList) {
-    if(objOfRepoList.name === "HTML-CSS" || objOfRepoList.name === "databases" || objOfRepoList.name === "JavaScript1" || objOfRepoList.name === "Git" || objOfRepoList.name === "CommandLine" || objOfRepoList.name === "Project" || objOfRepoList.name === "Node.js" || objOfRepoList.name === "React") {
+    if(moduleArray.includes(objOfRepoList.name))
+    return objOfRepoList;
 
-        return objOfRepoList;
-
-    }
+    
 }
 
 function getModule (objOfRepoList) {
@@ -113,38 +100,70 @@ function getModule (objOfRepoList) {
 
 function makeList (array, parentNode) {
     
-
+    const ultag = document.createElement('ul');
+    
     for(let j = 0; j < array.length; j++) {
         let item = document.createElement('li');
         if (parentNode === parentNode0)
         item.appendChild(document.createTextNode(array[j]));
-        else
-        item.appendChild(document.createTextNode(JSON.stringify(array[j])));
+        else {
+        item.innerHTML = "<ul><li>" + "stargazers: " + array[j].stargazers + "</li>" + "<li>" + "watchers: " + array[j].watchers + "</li>" + 
+        "<li>" + "forks: " + array[j].forks + "</li>" + 
+        "<li>" + "language: " + array[j].langugage + "</li></ul>"
+        }
 
-        parentNode.appendChild(item);
+       
+
+        ultag.appendChild(item);
 
     }
+    parentNode.appendChild(ultag);
+    
 }
 
 function getObject (objOfRepoList) {
-    let partialObj = {};
-    partialObj.stargazers = objOfRepoList.stargazers_count;
-    partialObj.watchers = objOfRepoList.watchers_count;
-    partialObj.forks = objOfRepoList.forks_count;
-    partialObj.language = objOfRepoList.language;
-    return  partialObj;
+    return {
+    stargazers: objOfRepoList.stargazers_count,
+    watchers: objOfRepoList.watchers_count,
+    forks: objOfRepoList.forks_count,
+    language: objOfRepoList.language
+    
+    };
+}
+
+
+
+function getURL (objOfRepoList) {
+
+    return objOfRepoList.owner.avatar_url;
 
 }
 
-const baseArray = createObjArray();
-const array1 = baseArray.filter(selectModule).map(getModule);
-const array2 = baseArray.filter(selectModule).map(getObject);
+
+const array1 = repoList.filter(selectModule).map(getModule);
+const array2 = repoList.filter(selectModule).map(getObject);
 console.log(array1);
 console.log(array2);
+
 makeList (array1, parentNode0);
 makeList (array2, parentNode1);
+
+const imgsrc = repoList.map(getURL)[0];
+console.log(imgsrc);
+
+
+const imgtag = document.createElement('img');
+imgtag.setAttribute('src', imgsrc);
+imgtag.setAttribute("alt", "hyflogo");
+
+const logoDiv = document.getElementsByClassName('logo')[0];
+logoDiv.appendChild(imgtag);
+
+
+
  
 
         
+
 
 
