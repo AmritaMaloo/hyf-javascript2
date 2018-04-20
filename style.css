@@ -37,6 +37,30 @@
         line-height: 4em;
     }
 
+@media all and (max-width: 800px) {
+
+        
+     .heading{
+        margin-top: 30px;
+        padding-left: 20px;
+        font-size: .5rem;
+        
+     }
+      
+      .logo img{
+          position: absolute;
+          width: 3rem;
+          height: 3rem;
+          margin-left:80px;
+          margin-top: 0;
+          
+      }
+      .column {
+
+        font-size: .7rem;
+      }
+      
+    }
    
     
     
