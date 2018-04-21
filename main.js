@@ -133,12 +133,6 @@ function getObject (objOfRepoList) {
 
 
 
-function getURL (objOfRepoList) {
-
-    return objOfRepoList.owner.avatar_url;
-
-}
-
 
 const array1 = repoList.filter(selectModule).map(getModule);
 const array2 = repoList.filter(selectModule).map(getObject);
@@ -148,7 +142,7 @@ console.log(array2);
 makeList (array1, parentNode0);
 makeList (array2, parentNode1);
 
-const imgsrc = repoList.map(getURL)[0];
+const imgsrc = repoList[0].owner.avatar_url;
 console.log(imgsrc);
 
 
